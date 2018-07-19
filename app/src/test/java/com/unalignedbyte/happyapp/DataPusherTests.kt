@@ -8,7 +8,7 @@ import com.unalignedbyte.happyapp.data.DataPusher
 class DataPusherTests {
     @Test fun testPushHappinessSubmissionWithoutWebApi() {
         val dataPusher = DataPusher()
-        val testObserver = TestObserver<Result<Void>>()
+        val testObserver = TestObserver<Result<Unit>>()
         dataPusher.pushHappinessSubmissionJsonData(ByteArray(0)).subscribe(testObserver)
         testObserver.assertValue(Result.failure())
     }

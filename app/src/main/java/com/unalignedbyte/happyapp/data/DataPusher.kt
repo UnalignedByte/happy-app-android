@@ -4,13 +4,13 @@ import io.reactivex.Observable
 import com.unalignedbyte.happyapp.core.Result
 
 interface DataPusherProtocol {
-    fun pushHappinessSubmissionJsonData(jsonData: ByteArray): Observable<Result<Void>>
+    fun pushHappinessSubmissionJsonData(jsonData: ByteArray): Observable<Result<Unit>>
 }
 
 class DataPusher: DataPusherProtocol {
     var webApi: WebApiProtocol? = null
 
-    override fun pushHappinessSubmissionJsonData(jsonData: ByteArray): Observable<Result<Void>> {
+    override fun pushHappinessSubmissionJsonData(jsonData: ByteArray): Observable<Result<Unit>> {
         val webApi = webApi
         if (webApi != null) {
         }

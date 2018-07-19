@@ -6,7 +6,7 @@ import com.unalignedbyte.happyapp.core.Result
 
 interface DataManagerProtocol {
     fun fetchHappinessStatus(): Observable<Result<HappinessStatus>>
-    fun pushHappinessSubmission(submission: HappinessSubmission): Observable<Result<Void>>
+    fun pushHappinessSubmission(submission: HappinessSubmission): Observable<Result<Unit>>
 }
 
 class DataManager : DataManagerProtocol {
@@ -32,9 +32,11 @@ class DataManager : DataManagerProtocol {
         return Observable.just(Result.failure())
     }
 
-    override fun pushHappinessSubmission(submission: HappinessSubmission): Observable<Result<Void>> {
+    override fun pushHappinessSubmission(submission: HappinessSubmission): Observable<Result<Unit>> {
         var dataPusher = dataPusher
         if (dataPusher != null) {
+            val jsonData = JSON.stringify(submission).toByteArray(Charsets.UTF_8)
+            return dataPusher.pushHappinessSubmissionJsonData(jsonData)
         }
 
         return Observable.just(Result.failure())
