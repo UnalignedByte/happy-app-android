@@ -1,4 +1,7 @@
 package com.unalignedbyte.happyapp.data
 
-data class HappinessStatus(val overallPercentage: Int) {
+import kotlinx.serialization.*
+
+@Serializable
+data class HappinessStatus(val overallPercentage: Int, val submissionsCount: Int) {
 }

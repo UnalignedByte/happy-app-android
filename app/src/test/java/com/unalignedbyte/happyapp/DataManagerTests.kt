@@ -20,6 +20,6 @@ class DataManagerTests {
         dataManager.dataFetcher = MockDataFetcher()
         val testObserver = TestObserver<Result<HappinessStatus>>()
         dataManager.fetchHappinessStatus().subscribe(testObserver)
-        testObserver.assertValue(Result.success(HappinessStatus(86)))
+        testObserver.assertValue(Result.success(HappinessStatus(86, 102)))
     }
 }
