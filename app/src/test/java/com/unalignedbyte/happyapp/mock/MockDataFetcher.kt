@@ -1,9 +1,9 @@
 package com.unalignedbyte.happyapp.mock
 
-import io.reactivex.Observable
 import java.io.File
-import com.unalignedbyte.happyapp.core.Result
+import io.reactivex.Observable
 import com.unalignedbyte.happyapp.data.DataFetcherProtocol
+import com.unalignedbyte.happyapp.core.Result
 
 class MockDataFetcher: DataFetcherProtocol {
     override fun fetchHappinessStatusJsonData(): Observable<Result<ByteArray>> {

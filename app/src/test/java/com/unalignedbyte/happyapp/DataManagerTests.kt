@@ -7,6 +7,7 @@ import com.unalignedbyte.happyapp.data.DataManager
 import com.unalignedbyte.happyapp.data.HappinessStatus
 import com.unalignedbyte.happyapp.data.HappinessSubmission
 import com.unalignedbyte.happyapp.mock.MockDataFetcher
+import com.unalignedbyte.happyapp.mock.MockInvalidDataPusher
 
 class DataManagerTests {
     // Fetcher
@@ -28,6 +29,15 @@ class DataManagerTests {
     // Pusher
     @Test fun testPushHappinessSubmissionWithoutDataPusher() {
         val dataManager = DataManager()
+        val testObserver = TestObserver<Result<Void>>()
+        val submission = HappinessSubmission(1)
+        dataManager.pushHappinessSubmission(submission).subscribe(testObserver)
+        testObserver.assertValue(Result.failure())
+    }
+
+    @Test fun testPushHappinessSubmissionWithInvalidDataPusher() {
+        val dataManager = DataManager()
+        dataManager.dataPusher = MockInvalidDataPusher()
         val testObserver = TestObserver<Result<Void>>()
         val submission = HappinessSubmission(1)
         dataManager.pushHappinessSubmission(submission).subscribe(testObserver)
