@@ -2,19 +2,24 @@ package com.unalignedbyte.happyapp
 
 import org.junit.Test
 import io.reactivex.observers.TestObserver
-import com.unalignedbyte.happyapp.core.Result
-import com.unalignedbyte.happyapp.data.DataManager
-import com.unalignedbyte.happyapp.data.HappinessStatus
-import com.unalignedbyte.happyapp.data.HappinessSubmission
-import com.unalignedbyte.happyapp.mock.MockDataFetcher
-import com.unalignedbyte.happyapp.mock.MockInvalidDataPusher
-import com.unalignedbyte.happyapp.mock.MockDataPusher
+import com.unalignedbyte.happyapp.core.*
+import com.unalignedbyte.happyapp.data.*
+import com.unalignedbyte.happyapp.mock.*
 
 class DataManagerTests {
     // Fetcher
     @Test
     fun testFetchHappinessStatusWithoutDataFetcher() {
         val dataManager = DataManager()
+        val testObserver = TestObserver<Result<HappinessStatus>>()
+        dataManager.fetchHappinessStatus().subscribe(testObserver)
+        testObserver.assertValue(Result.failure())
+    }
+
+    @Test
+    fun testFetchHappinessStatusWithInvalidDataFetcher() {
+        val dataManager = DataManager()
+        dataManager.dataFetcher = MockInvalidDataFetcher()
         val testObserver = TestObserver<Result<HappinessStatus>>()
         dataManager.fetchHappinessStatus().subscribe(testObserver)
         testObserver.assertValue(Result.failure())
