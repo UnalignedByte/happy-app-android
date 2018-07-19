@@ -6,6 +6,6 @@ import com.unalignedbyte.happyapp.core.Result
 
 class MockInvalidDataFetcher: DataFetcherProtocol {
     override fun fetchHappinessStatusJsonData(): Observable<Result<ByteArray>> {
-        return Observable.just(Result.failure())
+        return Observable.just(Result.Failure())
     }
 }

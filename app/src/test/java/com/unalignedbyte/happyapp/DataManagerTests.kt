@@ -13,7 +13,7 @@ class DataManagerTests {
         val dataManager = DataManager()
         val testObserver = TestObserver<Result<HappinessStatus>>()
         dataManager.fetchHappinessStatus().subscribe(testObserver)
-        testObserver.assertValue(Result.failure())
+        testObserver.assertValue(Result.Failure())
     }
 
     @Test
@@ -22,7 +22,7 @@ class DataManagerTests {
         dataManager.dataFetcher = MockInvalidDataFetcher()
         val testObserver = TestObserver<Result<HappinessStatus>>()
         dataManager.fetchHappinessStatus().subscribe(testObserver)
-        testObserver.assertValue(Result.failure())
+        testObserver.assertValue(Result.Failure())
     }
 
     @Test
@@ -31,7 +31,7 @@ class DataManagerTests {
         dataManager.dataFetcher = MockDataFetcher()
         val testObserver = TestObserver<Result<HappinessStatus>>()
         dataManager.fetchHappinessStatus().subscribe(testObserver)
-        testObserver.assertValue(Result.success(HappinessStatus(86, 102)))
+        testObserver.assertValue(Result.Success(HappinessStatus(86, 102)))
     }
 
     // Pusher
@@ -41,7 +41,7 @@ class DataManagerTests {
         val testObserver = TestObserver<Result<Unit>>()
         val submission = HappinessSubmission(1)
         dataManager.pushHappinessSubmission(submission).subscribe(testObserver)
-        testObserver.assertValue(Result.failure())
+        testObserver.assertValue(Result.Failure())
     }
 
     @Test
@@ -51,7 +51,7 @@ class DataManagerTests {
         val testObserver = TestObserver<Result<Unit>>()
         val submission = HappinessSubmission(1)
         dataManager.pushHappinessSubmission(submission).subscribe(testObserver)
-        testObserver.assertValue(Result.failure())
+        testObserver.assertValue(Result.Failure())
     }
 
     @Test
@@ -61,6 +61,6 @@ class DataManagerTests {
         val testObserver = TestObserver<Result<Unit>>()
         val submission = HappinessSubmission(1)
         dataManager.pushHappinessSubmission(submission).subscribe(testObserver)
-        testObserver.assertValue(Result.success(Unit))
+        testObserver.assertValue(Result.Success(Unit))
     }
 }

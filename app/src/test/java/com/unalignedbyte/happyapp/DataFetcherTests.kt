@@ -11,6 +11,6 @@ class DataFetcherTests {
 
         val testObserver = TestObserver<Result<ByteArray>>()
         dataFetcher.fetchHappinessStatusJsonData().subscribe(testObserver)
-        testObserver.assertValue(Result.failure())
+        testObserver.assertValue(Result.Failure())
     }
 }

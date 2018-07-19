@@ -9,6 +9,6 @@ class MockDataFetcher: DataFetcherProtocol {
     override fun fetchHappinessStatusJsonData(): Observable<Result<ByteArray>> {
         val fileUrl = this.javaClass.classLoader.getResource("happiness_status.json")
         val data = File(fileUrl.toURI()).readBytes()
-        return Observable.just(Result.success(data))
+        return Observable.just(Result.Success(data))
     }
 }

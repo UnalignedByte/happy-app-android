@@ -16,6 +16,6 @@ class DataFetcher: DataFetcherProtocol {
             //webApi?.happinessStatusUrl?.openConnection()?.getInputStream()?.read()
             //ByteArrayOutputStream().toByteArray()
         }
-        return Observable.just(Result.failure())
+        return Observable.just(Result.Failure())
     }
 }

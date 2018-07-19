@@ -22,14 +22,14 @@ class DataManager : DataManagerProtocol {
                         if (value != null) {
                             val jsonString = String(value)
                             val happinessStatus = JSON.parse<HappinessStatus>(jsonString)
-                            return@map Result.success(happinessStatus)
+                            return@map Result.Success(happinessStatus)
                         }
 
-                        return@map Result.failure<HappinessStatus>()
+                        return@map Result.Failure<HappinessStatus>()
                     }
         }
 
-        return Observable.just(Result.failure())
+        return Observable.just(Result.Failure())
     }
 
     override fun pushHappinessSubmission(submission: HappinessSubmission): Observable<Result<Unit>> {
@@ -39,6 +39,6 @@ class DataManager : DataManagerProtocol {
             return dataPusher.pushHappinessSubmissionJsonData(jsonData)
         }
 
-        return Observable.just(Result.failure())
+        return Observable.just(Result.Failure())
     }
 }

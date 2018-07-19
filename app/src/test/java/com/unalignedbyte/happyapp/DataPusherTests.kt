@@ -10,6 +10,6 @@ class DataPusherTests {
         val dataPusher = DataPusher()
         val testObserver = TestObserver<Result<Unit>>()
         dataPusher.pushHappinessSubmissionJsonData(ByteArray(0)).subscribe(testObserver)
-        testObserver.assertValue(Result.failure())
+        testObserver.assertValue(Result.Failure())
     }
 }

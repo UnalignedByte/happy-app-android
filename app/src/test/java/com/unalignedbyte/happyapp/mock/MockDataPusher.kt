@@ -6,6 +6,6 @@ import com.unalignedbyte.happyapp.core.Result
 
 class MockDataPusher: DataPusherProtocol {
     override fun pushHappinessSubmissionJsonData(jsonData: ByteArray): Observable<Result<Unit>> {
-        return Observable.just(Result.success(Unit))
+        return Observable.just(Result.Success(Unit))
     }
 }

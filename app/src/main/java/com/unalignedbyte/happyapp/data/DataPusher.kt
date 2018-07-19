@@ -14,6 +14,6 @@ class DataPusher: DataPusherProtocol {
         val webApi = webApi
         if (webApi != null) {
         }
-        return Observable.just(Result.failure())
+        return Observable.just(Result.Failure())
     }
 }
