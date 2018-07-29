@@ -7,6 +7,7 @@ import com.unalignedbyte.happyapp.core.Result
 interface DataManagerProtocol {
     fun fetchHappinessStatus(): Observable<Result<HappinessStatus>>
     fun pushHappinessSubmission(submission: HappinessSubmission): Observable<Result<Unit>>
+    fun pushUserLogin(userLogin: UserLogin): Observable<Result<Unit>>
 }
 
 class DataManager : DataManagerProtocol {
@@ -40,5 +41,9 @@ class DataManager : DataManagerProtocol {
         }
 
         return Observable.just(Result.Failure())
+    }
+
+    override fun pushUserLogin(userLogin: UserLogin): Observable<Result<Unit>> {
+        return Observable.just(Result.Success(Unit))
     }
 }
