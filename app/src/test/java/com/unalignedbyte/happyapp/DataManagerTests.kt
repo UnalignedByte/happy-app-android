@@ -4,6 +4,8 @@ import org.junit.Test
 import io.reactivex.observers.TestObserver
 import com.unalignedbyte.happyapp.core.*
 import com.unalignedbyte.happyapp.data.*
+import com.unalignedbyte.happyapp.data.entities.HappinessStatus
+import com.unalignedbyte.happyapp.data.entities.HappinessSubmission
 import com.unalignedbyte.happyapp.mock.*
 
 class DataManagerTests {

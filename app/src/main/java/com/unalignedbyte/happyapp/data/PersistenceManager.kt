@@ -10,15 +10,17 @@ interface PersistenceManagerProtocol {
     fun saveSubmissionDate(date: Date)
 }
 
-class PersistenceManager: PersistenceManagerProtocol {
+class PersistenceManager : PersistenceManagerProtocol {
     private val dateSubject = BehaviorSubject.create<Result<Date>>()
+
+    init {
+        dateSubject.onNext(Result.Failure())
+    }
+
+    // PersistenceManagerProtocol
     override val submissionDate: Observable<Result<Date>> = dateSubject
 
     override fun saveSubmissionDate(date: Date) {
         dateSubject.onNext(Result.Success(date))
-    }
-
-    init {
-        dateSubject.onNext(Result.Failure())
     }
 }

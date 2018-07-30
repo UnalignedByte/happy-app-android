@@ -7,9 +7,10 @@ interface DataPusherProtocol {
     fun pushHappinessSubmissionJsonData(jsonData: ByteArray): Observable<Result<Unit>>
 }
 
-class DataPusher: DataPusherProtocol {
+class DataPusher : DataPusherProtocol {
     var webApi: WebApiProtocol? = null
 
+    // DataPusherProtocol
     override fun pushHappinessSubmissionJsonData(jsonData: ByteArray): Observable<Result<Unit>> {
         val webApi = webApi
         if (webApi != null) {

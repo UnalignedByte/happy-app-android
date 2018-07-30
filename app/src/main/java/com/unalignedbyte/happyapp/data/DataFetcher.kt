@@ -7,14 +7,13 @@ interface DataFetcherProtocol {
     fun fetchHappinessStatusJsonData(): Observable<Result<ByteArray>>
 }
 
-class DataFetcher: DataFetcherProtocol {
+class DataFetcher : DataFetcherProtocol {
     var webApi: WebApiProtocol? = null
 
+    // DataFetcherProtocol
     override fun fetchHappinessStatusJsonData(): Observable<Result<ByteArray>> {
         val webApi = webApi
         if (webApi != null) {
-            //webApi?.happinessStatusUrl?.openConnection()?.getInputStream()?.read()
-            //ByteArrayOutputStream().toByteArray()
         }
         return Observable.just(Result.Failure())
     }

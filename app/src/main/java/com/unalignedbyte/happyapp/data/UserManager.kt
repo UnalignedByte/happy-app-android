@@ -6,11 +6,12 @@ import io.reactivex.functions.BiFunction
 import io.reactivex.rxkotlin.switchLatest
 import io.reactivex.subjects.BehaviorSubject
 import com.unalignedbyte.happyapp.core.Result
+import com.unalignedbyte.happyapp.data.entities.HappinessSubmission
+import com.unalignedbyte.happyapp.data.entities.UserLogin
 
 interface UserManagerProtocol {
     val canSubmit: Observable<Result<Boolean>>
     val isLoggedIn: Observable<Result<Boolean>>
-
     fun submitHappiness(level: Int): Observable<Result<Unit>>
     fun logIn()
 }
@@ -19,9 +20,13 @@ class UserManager : UserManagerProtocol {
     var dataManager: DataManagerProtocol? = null
     var timeManager: TimeManagerProtocol? = null
     var persistenceManager: PersistenceManagerProtocol? = null
-
     private val isLoggedInVar = BehaviorSubject.create<Boolean>()
 
+    init {
+        isLoggedInVar.onNext(false)
+    }
+
+    // UserManagerProtocol
     override val canSubmit: Observable<Result<Boolean>>
         get() {
             val timeManager = timeManager
@@ -62,16 +67,12 @@ class UserManager : UserManagerProtocol {
     override fun logIn() {
         val dataManager = dataManager
         if (dataManager != null) {
-            val userLogin = UserLogin("key")
+            val userLogin = UserLogin("dummy")
             dataManager.pushUserLogin(userLogin)
                     .subscribe {
                         val loggedIn = it != Result.Failure<Unit>()
                         isLoggedInVar.onNext(loggedIn)
                     }
         }
-    }
-
-    init {
-        isLoggedInVar.onNext(false)
     }
 }

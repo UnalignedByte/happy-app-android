@@ -2,9 +2,9 @@ package com.unalignedbyte.happyapp.mock
 
 import com.unalignedbyte.happyapp.core.Result
 import com.unalignedbyte.happyapp.data.DataManagerProtocol
-import com.unalignedbyte.happyapp.data.HappinessStatus
-import com.unalignedbyte.happyapp.data.HappinessSubmission
-import com.unalignedbyte.happyapp.data.UserLogin
+import com.unalignedbyte.happyapp.data.entities.HappinessStatus
+import com.unalignedbyte.happyapp.data.entities.HappinessSubmission
+import com.unalignedbyte.happyapp.data.entities.UserLogin
 import io.reactivex.Observable
 
 class MockDataManager: DataManagerProtocol {
