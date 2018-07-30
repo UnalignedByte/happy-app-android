@@ -28,7 +28,7 @@ class DataManagerTests {
     }
 
     @Test
-    fun testFetchHappinessStatusWithDataFetcher() {
+    fun testFetchHappinessStatusData() {
         val dataManager = DataManager()
         dataManager.dataFetcher = MockDataFetcher()
         val testObserver = TestObserver<Result<HappinessStatus>>()

@@ -3,9 +3,9 @@ package com.unalignedbyte.happyapp.mock
 import java.util.*
 import java.util.concurrent.TimeUnit
 import io.reactivex.Observable
+import io.reactivex.schedulers.Schedulers
 import com.unalignedbyte.happyapp.core.Result
 import com.unalignedbyte.happyapp.data.TimeManagerProtocol
-import io.reactivex.schedulers.Schedulers
 
 class MockTimeManager : TimeManagerProtocol {
     var scheduler = Schedulers.computation()

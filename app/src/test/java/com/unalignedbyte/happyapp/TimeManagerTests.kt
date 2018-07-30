@@ -35,6 +35,7 @@ class TimeManagerTests {
         observer.assertValue(Result.Success(true))
     }
 
+    // Private
     private val yesterdayDate: Date
         get() {
             val calendar = Calendar.getInstance()
