@@ -4,6 +4,8 @@ import org.junit.Test
 import io.reactivex.observers.TestObserver
 import com.unalignedbyte.happyapp.core.*
 import com.unalignedbyte.happyapp.data.*
+import com.unalignedbyte.happyapp.data.entities.HappinessStatus
+import com.unalignedbyte.happyapp.data.entities.HappinessSubmission
 import com.unalignedbyte.happyapp.mock.*
 
 class DataManagerTests {
@@ -26,7 +28,7 @@ class DataManagerTests {
     }
 
     @Test
-    fun testFetchHappinessStatusWithDataFetcher() {
+    fun testFetchHappinessStatusData() {
         val dataManager = DataManager()
         dataManager.dataFetcher = MockDataFetcher()
         val testObserver = TestObserver<Result<HappinessStatus>>()
